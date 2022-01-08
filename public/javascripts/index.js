@@ -11,11 +11,14 @@ window.onscroll = function () {
 }
 
 async function loadUser() {
+    var overlay = document.getElementsByClassName('overlay')
+    overlay[0].style.display = 'block'
     var response = await fetch('/users');
     var users = await response.json();
-    users.forEach(user => {
-        parseUserToUI(user)
+    users.forEach(async user => {
+       await parseUserToUI(user)
     });
+    overlay[0].style.display = 'none'
 }
 
 function parseUserToUI(user) {
