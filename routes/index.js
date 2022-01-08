@@ -7,13 +7,7 @@ let users = require('./../data/users.json')
 
 /* GET home page. */
 router.get('/',isLoggedIn, function(req, res, next) {
-  if(req.cookies['auth_status'] == 'login'){
-
-    res.render('index', { title: 'Employee List', users});
-  }else{
-    req.flash('error' , 'Please Login First')
-    res.redirect('/login')
-  }
+  res.render('index', { title: 'Employee List', users});
 });
 
 router.get('/users' ,isLoggedIn, function(req, res, next) {
